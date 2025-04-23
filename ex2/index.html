@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <style>
+    main {
+      border: 2px solid black;
+      border-radius: 20px;
+    }
+
+    .info {
+      margin: 20px;
+    }
+
+    table,
+    tr>* {
+      border: 2px solid;
+      padding: 10px;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    h2 {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="display: flex; border: 2px solid black; border-radius: 20px; margin-bottom: 10px;">
+    <img src="src/profile.png" alt="profile" style="margin: 20px; width: 128px; border-radius: 50%;">
+    <section style="margin-top: 30px;">
+      <h1>Kittikan Pitiwatsathaporn</h1>
+      <p>Student</p>
+    </section>
+  </header>
+  <main>
+    <section class="info">
+      <h2>Education</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Institution</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A School</td>
+            <td>2002</td>
+          </tr>
+          <tr>
+            <td>B School</td>
+            <td>2008</td>
+          </tr>
+          <tr>
+            <td>Z University</td>
+            <td>2022</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="info">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML , CSS</li>
+        <li>Java , Python</li>
+      </ul>
+    </section>
+
+    <section class="info">
+      <details>
+        <summary style="font-size: 1.5rem; font-weight: bold; text-decoration: underline;">Video</summary>
+        <p style="margin-left: 40px;">Do you really want to watch this video?</p>
+        <video controls style="width: 100%; height: auto;">
+          <source src="src/video.mp4" type="video/mp4">
+        </video>
+      </details>
+    </section>
+
+    <section class="info">
+      <h2>Contact</h2>
+      <p><strong style="margin-right: 10px;">Email</strong>Kittikan6848@gmail.com</p>
+      <p><strong style="margin-right: 10px;">Phone</strong>090-901-4174</p>
+      <p><strong>Github</strong><a href="https://github.com/663040642-8" target="_blank"
+          style="margin-left: 10px; ">Kittikan Pitiwatsathaporn</a></p>
+    </section>
+  </main>
+</body>
+
+</html>
