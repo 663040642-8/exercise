@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css">
+  <title>Exercise 4</title>
+</head>
+
+<body>
+  <header>
+    <img src="picture/logo.png" alt="Logo Header">
+  </header>
+
+  <div class="filter">
+    <label>Type:</label>
+    <select id="type-select">
+      <option value="all">All</option>
+      <option value="fire">Fire</option>
+      <option value="flying">Flying</option>
+      <option value="ghost">Ghost</option>
+      <option value="poison">Poison</option>
+      <option value="psychic">Psychic</option>
+      <option value="fairy">Fairy</option>
+      <option value="dragon">Dragon</option>
+      <option value="ground">Ground</option>
+      <option value="dark">Dark</option>
+      <option value="steel">Steel</option>
+    </select>
+    <label style="margin-left: 10px;">Captured:</label>
+    <select id="type-select">
+      <option value="all">Any</option>
+      <option value="captured">Captured</option>
+      <option value="notcaptued">Not Captured</option>
+    </select>
+  </div>
+
+  <div class="content">
+    <article class="card">
+      <p>6</p>
+      <img src="picture/charizard.avif" alt="Charizard" class="card-picture">
+      <h2>Charizard</h2>
+      <div class="type">
+        <span class="fire-type">Fire</span>
+        <span class="flying-type">Flying</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>94</p>
+      <img src="picture/gengar.avif" alt="Gengar" class="card-picture">
+      <h2>Gengar</h2>
+      <div class="type">
+        <span class="ghost-type">Ghost</span>
+        <span class="poison-type">Poison</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>282</p>
+      <img src="picture/gardevoir.avif" alt="Gardevoir" class="card-picture">
+      <h2>Gardevoir</h2>
+      <div class="type">
+        <span class="psychic-type">Psychic</span>
+        <span class="fairy-type">Fairy</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>373</p>
+      <img src="picture/salamence.avif" alt="Salamence" class="card-picture">
+      <h2>Salamence</h2>
+      <div class="type">
+        <span class="dragon-type">Dragon</span>
+        <span class="flying-type">Flying</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>383</p>
+      <img src="picture/groudon.avif" alt="Groudon" class="card-picture">
+      <h2>Groudon</h2>
+      <div class="type">
+        <span class="ground-type">Ground</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>570</p>
+      <img src="picture/zorua.avif" alt="Zorua" class="card-picture">
+      <h2>Zorua</h2>
+      <div class="type">
+        <span class="dark-type">Dark</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>715</p>
+      <img src="picture/noivern.avif" alt="Noivern" class="card-picture">
+      <h2>Noivern</h2>
+      <div class="type">
+        <span class="dragon-type">Dragon</span>
+        <span class="flying-type">Flying</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>727</p>
+      <img src="picture/incineroar.avif" alt="Incineroar" class="card-picture">
+      <h2>Incineroar</h2>
+      <div class="type">
+        <span class="fire-type">Fire</span>
+        <span class="dark-type">Dark</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>791</p>
+      <img src="picture/solgaleo.avif" alt="Solgaleo" class="card-picture">
+      <h2>Solgaleo</h2>
+      <div class="type">
+        <span class="psychic-type">Psychic</span>
+        <span class="steel-type">Steel</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <p>887</p>
+      <img src="picture/dragapult.avif" alt="Dragapult" class="card-picture">
+      <h2>Dragapult</h2>
+      <div class="type">
+        <span class="dragon-type">Dragon</span>
+        <span class="ghost-type">Ghost</span>
+      </div>
+      <div class="capture-button">
+        <img src="picture/openpokeball.png" alt="NotCaptured">
+        <span>Not Captured</span>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.capture-button');
+    buttons.forEach((button) => {
+      const image = button.querySelector('img');
+      const text = button.querySelector('span');
+      button.addEventListener('click', () => {
+        if (image.alt === "NotCaptured") {
+          image.src = "picture/closepokeball.png";
+          image.alt = "Captured";
+          text.textContent = "Captured";
+        } else {
+          image.src = "picture/openpokeball.png";
+          image.alt = "NotCaptured";
+          text.textContent = "Not Captured";
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
