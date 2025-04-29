@@ -1,5 +1,19 @@
+:root {
+  --background-color:rgb(120, 12, 178);
+  --fire-color:rgb(255, 68, 34);
+  --flying-color : rgb(136, 153, 255);
+  --ghost-color : rgb(102, 102, 187);
+  --poison-color : rgb(170, 85, 153);
+  --psychic-color : rgb(255, 85, 153);
+  --fairy-color : rgb(238, 153, 238);
+  --dragon-color : rgb(119, 102, 238);
+  --ground-color : rgb(221, 187, 85);
+  --dark-color : rgb(119, 85, 68);
+  --steel-color : rgb(170, 170, 187);
+}
+
 body {
-  background-color: rgb(120, 12, 178);
+  background-color: var(--background-color);
   font-family: 'Nunito', sans-serif;
 }
 
@@ -75,16 +89,16 @@ h2 {
   font-weight: 1000;
 }
 
-.fire-type {background-color: rgb(255, 68, 34);}
-.flying-type {background-color: rgb(136, 153, 255);}
-.ghost-type {background-color: rgb(102, 102, 187);}
-.poison-type {background-color: rgb(170, 85, 153);}
-.psychic-type {background-color: rgb(255, 85, 153);}
-.fairy-type {background-color: rgb(238, 153, 238);}
-.dragon-type {background-color: rgb(119, 102, 238);}
-.ground-type {background-color: rgb(221, 187, 85);}
-.dark-type {background-color: rgb(119, 85, 68);}
-.steel-type {background-color: rgb(170, 170, 187);}
+.fire-type {background-color: var(--fire-color);}
+.flying-type {background-color: var(--flying-color);}
+.ghost-type {background-color: var(--ghost-color);}
+.poison-type {background-color: var(--poison-color);}
+.psychic-type {background-color: var(--psychic-color);}
+.fairy-type {background-color: var(--fairy-color);}
+.dragon-type {background-color: var(--dragon-color);}
+.ground-type {background-color: var(--ground-color);}
+.dark-type {background-color: var(--dark-color);}
+.steel-type {background-color: var(--steel-color);}
 
 .capture-button {
   cursor: pointer;
