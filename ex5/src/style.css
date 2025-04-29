@@ -16,7 +16,6 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #ff8080;
     --text-color: #f0f0f0;
     --background-color:black;
     --card-shadow:gray;
