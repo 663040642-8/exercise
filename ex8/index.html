@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src/style.css" rel="stylesheet">
+</head>
+
+<body class="dark:bg-gray-950">
+  <main>
+    <section class="w-full text-2xl p-4">
+      <div id="formula" class="flex text-gray-500 justify-end">0</div>
+      <div id="result" class="dark:text-white flex justify-end text-4xl">0</div>
+    </section>
+    <section class="btn grid grid-cols-4 gap-2 p-2">
+      <button id="btn-clear" class="bg-gray-300 text-xl p-4 rounded cursor-pointer hover:bg-gray-500 ">C</button>
+      <button class="bg-gray-300 text-xl p-4 rounded cursor-pointer hover:bg-gray-500">+/-</button>
+      <button class="bg-gray-300 text-xl p-4 rounded cursor-pointer hover:bg-gray-500">%</button>
+      <button class="bg-amber-500 text-xl p-4 rounded cursor-pointer hover:bg-amber-700">/</button>
+
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">7</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">8</button>
+      <button class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">9
+      </button>
+      <button class="bg-amber-500 text-xl p-4 rounded cursor-pointer hover:bg-amber-700">*</button>
+
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">4</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">5</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">6</button>
+      <button class="bg-amber-500 text-xl p-4 rounded cursor-pointer hover:bg-amber-700">-</button>
+
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">1</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">2</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">3</button>
+      <button class="bg-amber-500 text-xl p-4 rounded cursor-pointer hover:bg-amber-700">+</button>
+
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer col-span-2 hover:bg-gray-400">0</button>
+      <button
+        class="dark:bg-gray-800 text-white bg-gray-200 text-xl p-4 rounded cursor-pointer hover:bg-gray-400">.</button>
+      <button class="bg-amber-500 text-xl p-4 rounded cursor-pointer hover:bg-amber-700">=</button>
+    </section>
+  </main>
+
+
+
+  <script>
+    const formulaDisplay = document.getElementById("formula");
+    const resultDisplay = document.getElementById("result");
+    const buttons = document.querySelectorAll("button");
+
+    let formula = "";
+    let result = "0";
+
+    function updateDisplay() {
+      formulaDisplay.textContent = formatFormula(formula || "0");
+      resultDisplay.textContent = isNaN(result) ? result : Number(result).toLocaleString();
+    }
+
+    function formatFormula(rawFormula) {
+      return rawFormula.replace(/\d+(\.\d+)?/g, (match) => {
+        return Number(match).toLocaleString();
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const value = button.textContent.trim();
+
+        if (value === "C") {
+          formula = "";
+          result = "0";
+        } else if (value === "=") {
+          try {
+            // Replace % with /100 for percentage calculation
+            const evalFormula = formula.replace(/%/g, "/100");
+            result = eval(evalFormula).toString();
+            formula = result;
+          } catch {
+            result = "Error";
+          }
+        } else if (value === "+/-") {
+          try {
+            if (formula) {
+              if (formula.startsWith("-")) {
+                formula = formula.slice(1);
+              } else {
+                formula = "-" + formula;
+              }
+            }
+          } catch {
+            result = "Error";
+          }
+        } else {
+          const operators = ["+", "-", "*", "/", "%"];
+
+          if (operators.includes(value)) {
+            // ถ้า formula ว่าง และ user กด operator ห้ามใส่
+            if (formula === "") return;
+
+            // ป้องกัน operator ซ้อนกัน เช่น 65++
+            const lastChar = formula[formula.length - 1];
+            if (operators.includes(lastChar)) {
+              // แทนที่ตัวสุดท้ายด้วย operator ใหม่
+              formula = formula.slice(0, -1) + value;
+            } else {
+              formula += value;
+            }
+          } else {
+            formula += value;
+          }
+        }
+
+        updateDisplay();
+      });
+    });
+
+    updateDisplay();
+  </script>
+</body>
+
+</html>
