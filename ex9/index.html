@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotes Display</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<!-- ไม่มีการเปลี่ยนแปลงโครงสร้างมากนัก -->
+<body class="m-5">
+  <header>
+    <h1 class="text-3xl my-4">Random Quote</h1>
+    <div class="flex flex-col border-2 rounded-lg p-4">
+      <div>
+        <p id="random-quote">Loading...</p>
+        <p id="random-author" class="font-bold"></p>
+      </div>
+      <button onclick="getRandomQuote()" class="border-2 p-2 rounded-lg ml-auto cursor-pointer">
+        Let's Go Gambling
+      </button>
+    </div>
+    <hr class="m-6">
+  </header>
+
+  <main>
+    <div class="flex justify-between mb-4">
+      <div>
+        <label for="itemsPerPage">Item per page:</label>
+        <select id="itemsPerPage" onchange="changeItemsPerPage()" class="border rounded-lg cursor-pointer">
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="quoteList"></div>
+  </main>
+
+  <script src="src/main.js"></script>
+</body>
+
+
+</html>
