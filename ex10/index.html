@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="font-[Nunito]">
+  <header>
+    <h1 class="text-3xl font-bold underline text-center py-6">
+      Pokedex
+    </h1>
+  </header>
+
+  <section class="flex items-center justify-center">
+    <label class="mx-2">Select Gen : </label>
+    <select class="border-2 rounded-2xl px-1">
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
+      <option value="7">VII</option>
+      <option value="8">VIII</option>
+      <option value="9">IX</option>
+    </select>
+  </section>
+
+  <section id="pokedex" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-8"></section>
+
+  <script src="src/main.js"></script>
+</body>
+
+</html>
