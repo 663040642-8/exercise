@@ -14,27 +14,53 @@
 
 <body class="font-[Nunito]">
   <header>
-    <h1 class="text-3xl font-bold underline text-center py-6">
+    <h1 class="text-5xl font-extrabold underline text-center my-8">
       Pokedex
     </h1>
   </header>
 
-  <section class="flex items-center justify-center">
-    <label class="mx-2">Select Gen : </label>
-    <select class="border-2 rounded-2xl px-1">
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-      <option value="4">IV</option>
-      <option value="5">V</option>
-      <option value="6">VI</option>
-      <option value="7">VII</option>
-      <option value="8">VIII</option>
-      <option value="9">IX</option>
-    </select>
+  <section class="flex flex-wrap items-center justify-center gap-4 my-6">
+    <!-- Gen Selector -->
+    <div class="flex items-center gap-2">
+      <label for="genSelect">Gen:</label>
+      <select id="genSelect" class="border-2 rounded-2xl px-2 py-1 cursor-pointer">
+        <option value="1">I</option>
+        <option value="2">II</option>
+        <option value="3">III</option>
+        <option value="4">IV</option>
+        <option value="5">V</option>
+        <option value="6">VI</option>
+        <option value="7">VII</option>
+        <option value="8">VIII</option>
+        <option value="9">IX</option>
+      </select>
+    </div>
+
+    <!-- Per Page Selector -->
+    <div class="flex items-center gap-2">
+      <label for="perPageSelect">Per Page:</label>
+      <select id="perPageSelect" class="border-2 rounded-2xl px-2 py-1 cursor-pointer">
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+    </div>
   </section>
 
+  <!-- Pokédex Grid -->
   <section id="pokedex" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-8"></section>
+
+  <!-- Pagination Buttons -->
+  <section id="pagination" class="flex justify-center items-center gap-2 my-6"></section>
+
+  <div id="pokemonModal" class="fixed inset-0 hidden items-center justify-center z-50 bg-black/40 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl p-6 w-[90%] max-w-md relative">
+      <button id="closeModal" class="absolute top-2 right-4 text-gray-500 text-3xl cursor-pointer">&times;</button>
+      <div id="modalContent" class="text-center">
+        <!-- Pokémon details will be injected here -->
+      </div>
+    </div>
+  </div>
 
   <script src="src/main.js"></script>
 </body>
