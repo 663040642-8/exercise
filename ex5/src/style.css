@@ -12,6 +12,7 @@
   --ground-color : rgb(221, 187, 85);
   --dark-color : rgb(119, 85, 68);
   --steel-color : rgb(170, 170, 187);
+    font-family: 'Nunito', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
