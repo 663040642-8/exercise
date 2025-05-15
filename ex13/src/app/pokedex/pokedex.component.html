@@ -1,0 +1,13 @@
+<ng-container *ngIf="pokemons$ | async as pokemons; else loading">
+  <ul>
+    <li *ngFor="let pokemon of pokemons">
+      <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+      <span>{{ pokemon.id }}</span>
+      <span>{{ pokemon.name }}</span>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
