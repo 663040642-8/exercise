@@ -1,11 +1,25 @@
 <ng-container *ngIf="pokemons$ | async as pokemons; else loading">
-  <ul>
-    <li *ngFor="let pokemon of pokemons">
+  <div class="flex justify-center items-center mb-4">
+    <button (click)="selectGeneration('I')" class="cursor-pointer mx-1">I</button>
+    <button (click)="selectGeneration('II')" class="cursor-pointer mx-1">II</button>
+    <button (click)="selectGeneration('III')"  class="cursor-pointer mx-1">III</button>
+    <button (click)="selectGeneration('IV')" class="cursor-pointer mx-1">IV</button>
+    <button (click)="selectGeneration('V')"  class="cursor-pointer mx-1">V</button>
+    <button (click)="selectGeneration('VI')" class="cursor-pointer mx-1">VI</button>
+    <button (click)="selectGeneration('VII')" class="cursor-pointer mx-1">VII</button>
+    <button (click)="selectGeneration('VIII')" class="cursor-pointer mx-1">VIII</button>
+    <button (click)="selectGeneration('IX')" class="cursor-pointer mx-1">IX</button>
+  </div>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <a *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 20, currentPage: page }" [routerLink]="[pokemon.id]">
       <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
       <span>{{ pokemon.id }}</span>
       <span>{{ pokemon.name }}</span>
-    </li>
-  </ul>
+      <span>{{ pokemon.types[0].type.name }}</span>
+      <span *ngIf="pokemon.types.length > 1">{{ pokemon.types[1].type.name }}</span>
+    </a>
+  </div>
 </ng-container>
 
 <ng-template #loading>

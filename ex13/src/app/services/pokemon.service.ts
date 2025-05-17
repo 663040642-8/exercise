@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { forkJoin, Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { forkJoin, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { forkJoin, Observable, of } from 'rxjs';
 export class PokemonService {
   constructor(private http: HttpClient) { }
 
-  getPokemons(limit= 100, offset= 0): Observable<Pokemon[]> {
+  getPokemons(limit = 151, offset = 0): Observable<Pokemon[]> {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     return this.http.get<PokemonListResponse>(apiUrl).pipe(
       switchMap(response => {
@@ -17,6 +17,9 @@ export class PokemonService {
         return forkJoin(requests);
       })
     );
+  }
+  getPokemonById(id: number): Observable<any> {
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
   }
 }
 
