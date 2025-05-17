@@ -1,27 +1,44 @@
 <ng-container *ngIf="pokemons$ | async as pokemons; else loading">
-  <div class="flex justify-center items-center mb-4">
-    <button (click)="selectGeneration('I')" class="cursor-pointer mx-1">I</button>
-    <button (click)="selectGeneration('II')" class="cursor-pointer mx-1">II</button>
-    <button (click)="selectGeneration('III')"  class="cursor-pointer mx-1">III</button>
-    <button (click)="selectGeneration('IV')" class="cursor-pointer mx-1">IV</button>
-    <button (click)="selectGeneration('V')"  class="cursor-pointer mx-1">V</button>
-    <button (click)="selectGeneration('VI')" class="cursor-pointer mx-1">VI</button>
-    <button (click)="selectGeneration('VII')" class="cursor-pointer mx-1">VII</button>
-    <button (click)="selectGeneration('VIII')" class="cursor-pointer mx-1">VIII</button>
-    <button (click)="selectGeneration('IX')" class="cursor-pointer mx-1">IX</button>
+
+  <header class="flex justify-center items-center py-4">
+    <img src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" alt="Logo" />
+  </header>
+
+  <h1 class="text-center my-4 text-2xl font-bold">Pick Your Generation</h1>
+
+  <div class="flex justify-center items-center mb-8 flex-wrap gap-3 px-4">
+    <button *ngFor="let gen of ['I','II','III','IV','V','VI','VII','VIII','IX']" (click)="selectGeneration(gen)"
+      [ngClass]="{
+        'bg-blue-600 text-white shadow-lg': selectedGeneration === gen,
+        'bg-gray-300 text-gray-700 hover:bg-blue-400 hover:text-white transition duration-300': selectedGeneration !== gen
+      }" class="cursor-pointer px-5 py-2 rounded-full font-semibold text-lg transition-all duration-300">
+      {{ gen }}
+    </button>
   </div>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <a *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 20, currentPage: page }" [routerLink]="[pokemon.id]">
-      <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
-      <span>{{ pokemon.id }}</span>
-      <span>{{ pokemon.name }}</span>
-      <span>{{ pokemon.types[0].type.name }}</span>
-      <span *ngIf="pokemon.types.length > 1">{{ pokemon.types[1].type.name }}</span>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 text-white mb-6">
+    <a *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 20, currentPage: page }" [routerLink]="[pokemon.id]"
+      class="flex flex-col items-center justify-center shadow-md rounded-lg p-4 hover:shadow-lg transition duration-200 transform hover:scale-105"
+      [ngClass]="getCardBgClass(pokemon.types[0].type.name)">
+      <span class="text-4xl font-bold opacity-60">#{{ pokemon.id }}</span>
+      <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" class="w-48 h-48 object-contain" />
+      <span class="capitalize font-[800] text-3xl mb-2">{{ pokemon.name }}</span>
+      <div class="capitalize flex gap-2">
+        <span class="capitalize font-[700] border-2 py-1/2 px-2 rounded-2xl">{{ pokemon.types[0].type.name }}</span>
+        <span *ngIf="pokemon.types.length > 1" class="font-[700] border-2 py-1/2 px-2 rounded-2xl">{{
+          pokemon.types[1].type.name }}</span>
+      </div>
     </a>
   </div>
+
+  <footer class="text-xl flex justify-center items-center font-bold">
+    <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+  </footer>
+
 </ng-container>
 
 <ng-template #loading>
-  <p>Loading...</p>
+  <div class="flex items-center justify-center h-64">
+    <span class="text-xl font-semibold text-blue-600 animate-pulse">Loading...</span>
+  </div>
 </ng-template>

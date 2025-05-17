@@ -1,37 +1,41 @@
-<div *ngIf="pokemonData; else loading">
-  <a routerLink="" class="absolute right-12"><img
-      src="https://static.vecteezy.com/system/resources/previews/000/568/450/original/home-icon-vector.jpg"
-      class="w-10 rounded-full" /></a>
-  <h2 class="text-2xl font-bold mb-4 capitalize">{{ pokemonData.name }}</h2>
-
-  <img [src]="pokemonData.sprites?.front_default" [alt]="pokemonData.name" class="w-48 h-48 mb-4" />
-
-  <p><strong>ID:</strong> {{ pokemonData.id }}</p>
-
-  <p>
-    <strong>Types:</strong>
-    <span *ngFor="let type of pokemonData.types; let i = index">
-      {{ type.type.name }}<span *ngIf="i < pokemonData.types.length - 1">, </span>
-    </span>
-  </p>
-
-  <p>
-    <strong>Height:</strong> {{ pokemonData.height }}
-  </p>
-  <p>
-    <strong>Weight:</strong> {{ pokemonData.weight }}
-  </p>
-
-  <div class="mt-4">
-    <strong>Abilities:</strong>
-    <ul class="list-disc list-inside">
-      <li *ngFor="let ability of pokemonData.abilities">
-        {{ ability.ability.name }}
-      </li>
-    </ul>
-  </div>
+<div *ngIf="loading" >
+  <span class="text-lg font-semibold text-blue-600">Loading...</span>
 </div>
 
-<ng-template #loading>
-  <p>Loading Pokémon data...</p>
-</ng-template>
+<div *ngIf="!loading && pokemonData"
+  class="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg shadow-md w-80 mx-auto mt-10 transition-transform transform hover:scale-105 duration-300">
+
+
+  <p>#{{ pokemonData.id }}</p>
+  <h2 class="text-2xl font-bold capitalize text-center ">{{ pokemonData.name }}</h2>
+  <div class="capitalize flex gap-2 text-[14px]">
+    <span class="capitalize font-[700] border-2 py-1/2 px-2 rounded-2xl">{{ pokemonData.types[0].type.name }}</span>
+    <span *ngIf="pokemonData.types.length > 1" class="font-[700] border-2 py-1/2 px-2 rounded-2xl">{{
+      pokemonData.types[1].type.name }}</span>
+  </div>
+  <img [src]="pokemonData.sprites?.front_default" [alt]="pokemonData.name" class="w-48 h-48 mb-4" />
+
+
+  <p><strong>Height:</strong> {{ pokemonData.height/10 }} m</p>
+  <p><strong>Weight:</strong> {{ pokemonData.weight/10 }} kg</p>
+
+  <div class="mt-4 flex flex-col capitalize text-center">
+    <strong>Abilities</strong>
+    <ol class="list-decimal list-inside">
+      <li *ngFor="let ability of pokemonData.abilities">
+        {{ ability.ability.name }}
+        <span *ngIf="ability.is_hidden" class="text-sm text-gray-500">(Hidden Ability)</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="navigation-buttons mt-4 flex justify-between w-48">
+    <button (click)="goPrev()" [disabled]="loading || pokemonId === 1" class="cursor-pointer">
+      &lt;&lt; </button>
+    <a routerLink="">
+      <img src="https://static.vecteezy.com/system/resources/previews/000/568/450/original/home-icon-vector.jpg"
+        class="w-10 rounded-full" alt="Home" />
+    </a>
+    <button (click)="goNext()" [disabled]="loading" class="cursor-pointer">&gt;&gt;</button>
+  </div>
+</div>

@@ -16,17 +16,19 @@ import { BehaviorSubject, switchMap } from 'rxjs';
 })
 
 export class PokedexComponent {
+  selectedGeneration: string = 'I';
+  page = 1;
   private limitOffset$ = new BehaviorSubject<{ limit: number; offset: number }>({ limit: 151, offset: 0 });
   pokemons$ = this.limitOffset$.pipe(
     switchMap(({ limit, offset }) => this.pokemonService.getPokemons(limit, offset))
   );
 
-  page = 1;
-
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService) { }
 
   selectGeneration(gen: string) {
-    switch(gen) {
+    this.selectedGeneration = gen; // เก็บค่าว่าเลือก generation ไหน
+
+    switch (gen) {
       case 'I':
         this.limitOffset$.next({ limit: 151, offset: 0 });
         break;
@@ -57,8 +59,43 @@ export class PokedexComponent {
       default:
         this.limitOffset$.next({ limit: 151, offset: 0 });
     }
+
     this.page = 1;
   }
+
+  getCardBgClass(type: string): string {
+    const typeToClassMap: { [key: string]: string } = {
+      fire: 'bg-red-500',
+      water: 'bg-blue-400',
+      grass: 'bg-green-400',
+      electric: 'bg-yellow-300',
+      psychic: 'bg-pink-400',
+      ice: 'bg-cyan-200',
+      dragon: 'bg-purple-600',
+      dark: 'bg-gray-700',
+      fairy: 'bg-pink-200',
+      normal: 'bg-gray-200',
+      fighting: 'bg-orange-600',
+      flying: 'bg-indigo-300',
+      poison: 'bg-purple-400',
+      ground: 'bg-yellow-600',
+      rock: 'bg-yellow-800',
+      bug: 'bg-lime-500',
+      ghost: 'bg-indigo-700',
+      steel: 'bg-gray-400'
+    };
+
+    return typeToClassMap[type] || 'bg-gray-100';
+  }
+
+  onPageChange(page: number) {
+  this.page = page;
+
+  window.scrollTo({ top: 0, behavior: 'auto' });
 }
+
+}
+
+
 
 
