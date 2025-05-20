@@ -47,7 +47,7 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   goNext() {
-    if (this.loading) return;  // บล็อกถ้ากำลังโหลดอยู่
+    if (this.loading) return; 
     this.router.navigate([this.pokemonId + 1]);
   }
 

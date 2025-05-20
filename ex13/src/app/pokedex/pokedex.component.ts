@@ -26,7 +26,7 @@ export class PokedexComponent {
   constructor(private pokemonService: PokemonService) { }
 
   selectGeneration(gen: string) {
-    this.selectedGeneration = gen; // เก็บค่าว่าเลือก generation ไหน
+    this.selectedGeneration = gen;
 
     switch (gen) {
       case 'I':
